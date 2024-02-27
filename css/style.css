@@ -1,0 +1,95 @@
+.grow{
+    flex-grow: 0;
+}
+
+.fundoADMlogin{ 
+    background-color: rgb(10, 10, 10);
+}
+.cardADMlogin{
+    background-color: lightgray;
+    box-shadow: rgb(133, 133, 133) 0 0 1em;
+}
+.opcoesADM{
+    color: rgb(255, 255, 255);
+}
+.opcoesADM:hover{
+    text-shadow: rgb(114, 114, 114) 0 0 1em;
+}
+.wCad{
+    text-align: center;
+    color: white;
+}
+.wAdm{
+    text-align: center;
+    color: white;
+}
+.bglist{
+    background-color:#1C1C1C;
+    color: white;
+    border-color: #1C1C1C;
+}
+.bgAside{
+    background-color: #1C1C1C;
+
+}
+.colapse{
+    background-color: #1C1e1e;
+}
+.colapseList{
+    background-color: #0d0e0e;
+    border-color: #0d0e0e;
+}
+.msgerro{
+    display: none;
+}
+#msg{
+    display: none;
+}
+
+ /* Estilo de classificacao dos filmes */
+.amarelo{
+    background-color: rgb(189, 189, 35);
+    color: black;
+}
+.verde{
+    background-color: rgba(43, 173, 18, 0.877);
+    color: black;
+}
+.azul{
+    background-color: rgb(6, 77, 138);
+    color: black;
+}
+.laranja{
+    background-color: rgb(187, 103, 1);
+    color: black;
+}
+.vermelho{
+    background-color: rgb(181, 20, 20);
+    color: black;
+}
+.preto{
+    background-color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
+}
+
+/* -------------------- */
+
+/* --------------Login--------------- */
+
+.formEmailAdm{
+    width: 300px;
+    border-radius: 20px;
+    height: 40px;
+    margin-bottom: 10px; 
+    align-items: center;
+}
+.formSenhaAdm{
+    width: 300px;
+    border-radius: 20px;
+    height: 40px; 
+    align-items: center;
+}
+
+.labelAdm{
+    color: black;
+}
