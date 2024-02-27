@@ -94,19 +94,19 @@ function carregarConteudo(controle) {
 
 // cadastro de genero
 
-const generoModal = document.getElementById('cadGenero');
+const generoModal = document.getElementById('mdlCadGenero');
 const inGenero = document.getElementById('genero');
 const btnBotao = document.getElementById('btnCadGenero');
 
 // inGenero.value = 'Marco';
 
 if (generoModal) {
-    const formGenero = document.getElementById('cadGenero');
+    const formGenero = document.getElementById('frmCadGenero');
 
     generoModal.addEventListener('shown.bs.modal', () => {
         inGenero.focus()
         const submitHandler = function (event) {
-            event.preventDefault();
+            //event.preventDefault();
             btnBotao.disabled = true;
             mostrarLoading()
             var form = event.target;
@@ -122,7 +122,7 @@ if (generoModal) {
                 .then(data => {
                     fecharLoading();
                     console.log(data);
-                    if (data.success) {      
+                    if (data.success) {
                         msg.innerHTML = data.message;
                         msg.style.display = 'block';
                     } else {

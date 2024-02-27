@@ -146,8 +146,7 @@ if ($_SESSION['idadm']) {
             </div>
             <div class="modal-body">
                 <div class="card-body">
-                    <form action="#" method="post" name="frmCadGenero" id="
-                    ">
+                    <form action="" method="post" name="frmCadGenero" id="frmCadGenero">
                         <div>
                             <label for="genero" class="label-control text-black">Gênero:</label>
                             <input type="text" required="required" placeholder="Digite um gênero" class="form-control" name="inCadGenero" id="genero">

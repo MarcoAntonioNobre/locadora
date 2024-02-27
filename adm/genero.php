@@ -1,7 +1,7 @@
 <div class="card mt-2">
     <div class="d-flex justify-content-between card-header bg-dark">
         <h5 class="fs-2 text-white"><i class="bi bi-hash"></i> Gêneros</h5>
-        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#cadGenero">Cadastrar</button>
+        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#mdlCadGenero">Cadastrar</button>
     </div>
     <div class="card-body bg-dark">
         <div id="msg" class="alert alert-success text-center" role="alert"></div>

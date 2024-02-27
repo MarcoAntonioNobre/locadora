@@ -15,7 +15,7 @@ $conn = conectar();
 $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 
 if (!empty($dados) && isset($dados)){
-    $genero = isset($dados['cadGenero']) ? addslashes(mb_strtoupper($dados['cadGenero'], 'UTF-8')) : '';
+    $genero = isset($dados['inCadGenero']) ?  addslashes(mb_strtoupper($dados['inCadGenero'], 'UTF-8')) : '';
 
     $retornoInsert =  cadGenero($genero, DATATIMEATUAL);
     if ($retornoInsert > 0){
