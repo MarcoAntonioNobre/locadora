@@ -1,7 +1,7 @@
 <div class="card mt-2">
     <div class="d-flex justify-content-between card-header bg-dark">
         <h5 class="fs-2 text-white"><i class="bi bi-film"></i> Filmes</h5>
-        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#cadastroFilme">Cadastrar</button>
+        <button type="button" class="btn verdeBtn botaoRadius" data-bs-toggle="modal" data-bs-target="#cadastroFilme">Cadastrar</button>
     </div>
     <div class="card-body bg-dark">
         <table class="table table-dark table-striped">
@@ -42,7 +42,7 @@
                             <td><?php echo $classificacao; ?></td>
                             <td>
 
-                                <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#vermais<?php echo $id ?>">Ver mais</button>
+                                <button type="button" class="btn verdeBtn botaoRadius" data-bs-toggle="modal" data-bs-target="#vermais<?php echo $id ?>">Ver mais</button>
                                 <!-- Modal ver mais-->
                                 <div class="modal fade" id="vermais<?php echo $id ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog modal-lg modal-dialog-centered">
@@ -155,13 +155,13 @@
                                                 </div>
                                             </div>
                                             <div class="modal-footer bg-dark">
-                                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Voltar</button>
+                                                <button type="button" class="btn vermelhoBtn botaoRadius" data-bs-dismiss="modal">Voltar</button>
 
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#alterar<?php echo $id ?>">Alterar</button>
+                                <button type="button" class="btn azulBtn botaoRadius" data-bs-toggle="modal" data-bs-target="#alterar<?php echo $id ?>">Alterar</button>
                                 <!-- Modal alterar-->
                                 <div class="modal fade" id="alterar<?php echo $id ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered">
@@ -171,31 +171,31 @@
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body bg-dark">
-                                                <div class="card-body text-white bg-dark">
+                                                <div class="card-body bg-dark">
                                                     <form action="altFilme.php" method="post" name="atlFilme">
                                                         <div>
                                                             <label for="nomeFilme" class="label-control">Nome do filme:</label>
-                                                            <input type="text" required="required" value="<?php echo $nome ?>" name="nomeFilme" id="nomeFilme" class="form-control">
+                                                            <input type="text" required="required" value="<?php echo $nome ?>" name="nomeFilme" id="nomeFilme" class="form-control bg-dark text-white">
                                                         </div>
                                                         <div>
                                                             <label for="diretor" class="label-control">Diretor(es):</label>
-                                                            <input type="text" required="required" value="<?php echo $diretor ?>" class="form-control" name="diretor" id="diretor">
+                                                            <input type="text" required="required" value="<?php echo $diretor ?>" class="form-control bg-dark text-white" name="diretor" id="diretor">
                                                         </div>
                                                         <div>
                                                             <label for="dataLancamento" class="label-control">Data de lançamento:</label>
-                                                            <input type="date" required="required" value="<?php echo $dataLancamento ?>" class="form-control" name="dataLancamento" id="dataLancamento">
+                                                            <input type="date" required="required" value="<?php echo $dataLancamento ?>" class="form-control bg-dark text-white" name="dataLancamento" id="dataLancamento">
                                                         </div>
                                                         <div>
                                                             <label for="classificacao" class="label-control">Classificação:</label>
-                                                            <select name="classificacao" id="classificacao" class="form-control">
-                                                                <option selected><?php echo $classificacao ?></option>
+                                                            <select name="classificacao" id="classificacao" class="form-control bg-dark text-white">
+                                                                <option class="bg-dark text-white" selected><?php echo $classificacao ?></option>
                                                                 <?php
                                                                 $classificacao = listarTabela('*', 'classificacao', 'classificacao');
                                                                 foreach ($classificacao as $classificacaoItem) {
                                                                     $id = $classificacaoItem->idclassificacao;
                                                                     $classificacao = $classificacaoItem->classificacao;
                                                                 ?>
-                                                                    <option value="<?php echo $id ?>"><?php echo $classificacao ?></option>
+                                                                    <option class="bg-dark text-white" value="<?php echo $id ?>"><?php echo $classificacao ?></option>
                                                                 <?php
                                                                 }
                                                                 ?>
@@ -203,15 +203,15 @@
                                                         </div>
                                                         <div>
                                                             <label for="genero" class="label-control">Gênero:</label>
-                                                            <select name="slcgenero" id="slcgenero" class="form-control">
-                                                                <option><?php echo $genero ?></option>
+                                                            <select name="slcgenero" id="slcgenero" class="form-control bg-dark text-white">
+                                                                <option class="bg-dark text-white"><?php echo $genero ?></option>
                                                                 <?php
                                                                 $genero = listarTabela('*', 'genero', 'nome');
                                                                 foreach ($genero as $generoItem) {
                                                                     $id = $generoItem->idgenero;
                                                                     $nomeGenero = $generoItem->nome;
                                                                 ?>
-                                                                    <option value="<?php echo $id ?>"><?php echo $nomeGenero ?></option>
+                                                                    <option class="bg-dark text-white" value="<?php echo $id ?>"><?php echo $nomeGenero ?></option>
                                                                 <?php
                                                                 }
                                                                 ?>
@@ -220,14 +220,14 @@
                                                 </div>
                                             </div>
                                             <div class="modal-footer bg-dark">
-                                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Voltar</button>
-                                                <button type="submit" class="btn btn-primary">Alterar</button>
+                                                <button type="button" class="btn vermelhoBtn botaoRadius" data-bs-dismiss="modal">Voltar</button>
+                                                <button type="submit" class="btn azulBtn botaoRadius">Alterar</button>
                                             </div>
                                             </form>
                                         </div>
                                     </div>
                                 </div>
-                                <button type="button" class="btn btn-danger btn-sm">Apagar</button>
+                                <button type="button" class="btn vermelhoBtn botaoRadius">Apagar</button>
 
                             </td>
                         </tr>

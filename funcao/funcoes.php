@@ -68,8 +68,6 @@ function ativar($tabela,$campo,$ativo,$condicao)
     $conn = null;
 }
 
-
-
 function listarAula($condicao)
 {
     $conn = conectar();
@@ -96,6 +94,8 @@ function listarAula($condicao)
     }
     $conn = null;
 }
+
+
 
 function verificarUser($campos, $tabela, $campoBdEmail, $campoEmail, $campoBdSenha, $campoSenha, $campoBdAtivo, $campoAtivo)
 {
@@ -127,6 +127,9 @@ function verificarUser($campos, $tabela, $campoBdEmail, $campoEmail, $campoBdSen
 }
 
 
+
+
+
 function cadCliente($nome,$nascimento,$cpf,$dataatual)
 {
     $conn = conectar();
@@ -141,8 +144,9 @@ function cadCliente($nome,$nascimento,$cpf,$dataatual)
         $idRetorno = $conn->lastInsertId();
         $conn->commit();
         if ($sqlverificar->rowCount() > 0) {
-            return $idRetorno;
-            // return $sqlverificar->fetchAll(PDO::FETCH_OBJ);
+            return true;
+            //return $idRetorno;
+            //return $sqlverificar->fetchAll(PDO::FETCH_OBJ);
         } else {
             return 'Vazio';
         }
@@ -154,6 +158,62 @@ function cadCliente($nome,$nascimento,$cpf,$dataatual)
     }
     $conn = null;
 }
+
+function editCliente($nome,$nascimento,$cpf,$id)
+{
+    $conn = conectar();
+    try {
+        $conn->beginTransaction();
+        $sqlverificar = $conn->prepare("UPDATE cliente SET nome = ?, nascimento = ?, cpf= ? WHERE idcliente = ?");
+        $sqlverificar->bindValue(1, $nome, PDO::PARAM_STR);
+        $sqlverificar->bindValue(2, $nascimento, PDO::PARAM_STR);
+        $sqlverificar->bindValue(3, $cpf, PDO::PARAM_STR);
+        $sqlverificar->bindValue(4, $id, PDO::PARAM_STR);
+        $sqlverificar->execute();
+        $idRetorno = $conn->lastInsertId();
+        $conn->commit();
+        if ($sqlverificar->rowCount() > 0) {
+            return true;
+            //return $idRetorno;
+            //return $sqlverificar->fetch(PDO::FETCH_OBJ);
+        } else {
+            return null;
+        }
+    } catch (PDOExecption $e) {
+        echo 'Exception -> ';
+        return ($e->getMessage());
+        $conn->rollback();
+    }
+    $conn = null;
+}
+
+function apagarCliente($apagar)
+{
+    $conn = conectar();
+    try {
+        $conn->beginTransaction();
+        $sqlverificar = $conn->prepare("DELETE FROM cliente WHERE idcliente = ?");
+        $sqlverificar->bindValue(1, $apagar, PDO::PARAM_INT);
+        $sqlverificar->execute();
+        $idRetorno = $conn->lastInsertId();
+        $conn->commit();
+        if ($sqlverificar->rowCount() > 0) {
+            return true;
+            //return $idRetorno;
+            // return $sqlverificar->fetchAll(PDO::FETCH_OBJ);
+        } else {
+            return null;
+        }
+    } catch (PDOExecption $e) {
+        echo 'Exception -> ';
+        return ($e->getMessage());
+        $conn->rollback();
+    }
+    $conn = null;
+}
+
+
+
 
 function cadGenero($genero,$dataatual)
 {
@@ -172,8 +232,7 @@ function cadGenero($genero,$dataatual)
         } else {
             return 'Vazio';
         }
-    } catch
-    (PDOExecption $e) {
+    } catch (PDOExecption $e) {
         echo 'Exception -> ';
         return ($e->getMessage());
         $conn->rollback();
@@ -181,6 +240,55 @@ function cadGenero($genero,$dataatual)
     $conn = null;
 }
 
+function editGenero($genero,$id)
+{
+    $conn = conectar();
+    try {
+        $conn->beginTransaction();
+        $sqlverificar = $conn->prepare("UPDATE genero SET nome = ? WHERE idgenero = ?");
+        $sqlverificar->bindValue(1, $genero, PDO::PARAM_STR);
+        $sqlverificar->bindValue(2, $id, PDO::PARAM_STR);
+        $sqlverificar->execute();
+        //$idRetorno = $conn->lastInsertId();
+        $conn->commit();
+        if ($sqlverificar->rowCount() > 0) {
+            //return $idRetorno;
+            return $sqlverificar->fetchAll(PDO::FETCH_OBJ);
+        } else {
+            return 'Vazio';
+        }
+    } catch (PDOExecption $e) {
+        echo 'Exception -> ';
+        return ($e->getMessage());
+        $conn->rollback();
+    }
+    $conn = null;
+}
+
+function apagarGenero($apagar)
+{
+    $conn = conectar();
+    try {
+        $conn->beginTransaction();
+        $sqlverificar = $conn->prepare("DELETE FROM genero WHERE idgenero = ?");
+        $sqlverificar->bindValue(1, $apagar, PDO::PARAM_INT);
+        $sqlverificar->execute();
+        $idRetorno = $conn->lastInsertId();
+        $conn->commit();
+        if ($sqlverificar->rowCount() > 0) {
+            return true;
+            //return $idRetorno;
+            // return $sqlverificar->fetchAll(PDO::FETCH_OBJ);
+        } else {
+            return null;
+        }
+    } catch (PDOExecption $e) {
+        echo 'Exception -> ';
+        return ($e->getMessage());
+        $conn->rollback();
+    }
+    $conn = null;
+}
 
 function cadFilme($slcgenero, $classificacao,$nomeFilme, $diretor, $dataLancamento, $dataatual)
 {
@@ -203,8 +311,7 @@ function cadFilme($slcgenero, $classificacao,$nomeFilme, $diretor, $dataLancamen
         } else {
             return 'Vazio';
         }
-    } catch
-    (PDOExecption $e) {
+    } catch (PDOExecption $e) {
         echo 'Exception -> ';
         return ($e->getMessage());
         $conn->rollback();
@@ -212,30 +319,7 @@ function cadFilme($slcgenero, $classificacao,$nomeFilme, $diretor, $dataLancamen
     $conn = null;
 }
 
-function apagarGenero($apagar)
-{
-    $conn = conectar();
-    try {
-        $conn->beginTransaction();
-        $sqlverificar = $conn->prepare("DELETE FROM genero WHERE idgenero = ?");
-        $sqlverificar->bindValue(1, $apagar, PDO::PARAM_INT);
-        $sqlverificar->execute();
-        $idRetorno = $conn->lastInsertId();
-        $conn->commit();
-        if ($sqlverificar->rowCount() > 0) {
-            return $idRetorno;
-            // return $sqlverificar->fetchAll(PDO::FETCH_OBJ);
-        } else {
-            return 'Vazio';
-        }
-    } catch
-    (PDOExecption $e) {
-        echo 'Exception -> ';
-        return ($e->getMessage());
-        $conn->rollback();
-    }
-    $conn = null;
-}
+
 
 function verificarSenhaCriptografia($campos, $tabela, $campoBdEmail, $campoEmail, $campoBdSenha, $campoSenha, $campoBdAtivo, $campoAtivo)
 {
@@ -259,8 +343,7 @@ function verificarSenhaCriptografia($campos, $tabela, $campoBdEmail, $campoEmail
             return 'usuario';
         }
         return null;
-    } catch
-    (Throwable $e) {
+    } catch (Throwable $e) {
         
         $error_message = 'Throwable: ' . $e->getMessage() . PHP_EOL;
         $error_message .= 'File: ' . $e->getFile() . PHP_EOL;

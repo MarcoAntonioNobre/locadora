@@ -20,8 +20,8 @@ include_once '../funcao/funcoes.php';
 <body class="fundoADMlogin">
     <div class="container-fluid">
         <div class="position-absolute top-50 start-50 translate-middle">
-            <div class="card cardADMlogin">
-                <h5 class="card-header text-center h3 text-white bg-dark">Área restrita
+            <div class="card cardADMlogin bg-transparent">
+                <h5 class="card-header text-center h3 text-white bg-dark bg-transparent">Área restrita
                     <?php
                     $option = [
                         'cost' => 12,
@@ -32,19 +32,19 @@ include_once '../funcao/funcoes.php';
                    
                     ?>
                 </h5>
-                <div class="card-body">
+                <div class="card-body bg-transparent">
                     <form action="#" method="post" id="frmLogin">
-                        <div>
-                            <label for="inpemail" class="form-label">Email:</label>
+                        <div class="divLabelAdm">
+                            <label for="inpemail" class="form-label labelAdm">Email:</label>
                             <input type="email" name="email" id="inpemail" required="required" class="form-control formEmailAdm">
                         </div>
-                        <div>
+                        <div class="divLabelAdm">
                             <label for="inpsenha" class="form-label labelAdm">Senha:</label>
                             <input type="password" name="senha" id="inpsenha" required="required" class="form-control formSenhaAdm">
                         </div>
                         <hr>
-                        <div class="d-flex justify-content-end">
-                            <button type="button" class="btn btn-outline-primary" onclick="fazerlogin()">Entrar</button>
+                        <div class="d-flex justify-content-center">
+                            <button type="button" class="btnAdmLogin" onclick="fazerlogin()">Entrar</button>
                         </div>
                     </form>
                 </div>

@@ -5,14 +5,12 @@
 .fundoADMlogin{ 
     background-color: rgb(10, 10, 10);
 }
-.cardADMlogin{
-    background-color: lightgray;
-    box-shadow: rgb(133, 133, 133) 0 0 1em;
-}
+
 .opcoesADM{
     color: rgb(255, 255, 255);
 }
 .opcoesADM:hover{
+    color: white;
     text-shadow: rgb(114, 114, 114) 0 0 1em;
 }
 .wCad{
@@ -78,18 +76,90 @@
 
 .formEmailAdm{
     width: 300px;
-    border-radius: 20px;
-    height: 40px;
-    margin-bottom: 10px; 
+    border-radius: 30px;
+    height: 50px;
+    margin-bottom: 30px;
     align-items: center;
+    justify-content: center;
 }
 .formSenhaAdm{
     width: 300px;
-    border-radius: 20px;
-    height: 40px; 
+    border-radius: 30px;
+    height: 50px;
     align-items: center;
 }
 
 .labelAdm{
-    color: black;
+    color: white;
+    text-align: center;
+}
+
+.cardADMlogin{
+    border: none;
+}
+
+.divLabelAdm{
+    text-align: center;
+}
+
+.btnAdmLogin{
+    padding: 10px 20px 10px 20px;
+    border-radius: 20px;
+    border: none;
+    background-color: #0b7d07;
+    color: white;
+}
+
+.btnAdmLogin:hover{
+    scale: 1.15;
+    /*transform: perspective(20px);*/
+    transition-duration: 0.5s;
+    background-color: #1e1c1c;
+}
+
+/*Adm off canva*/
+
+.btnOffCanvas{
+    background-color: white;
+}
+.btnChamaOffCanva{
+    background-color: gray;
+    margin-left: 5px;
+    color: white;
+}
+
+/*Botoes*/
+
+.botaoRadius{
+    border-radius: 30px;
+}
+
+.verdeBtn{
+    background-color: #075d07;
+    color: white;
+}
+
+.verdeBtn:hover{
+    background-color: #075d07;
+    color: white;
+}
+
+.vermelhoBtn{
+    background-color: #830303;
+    color: white;
+}
+
+.vermelhoBtn:hover{
+    background-color: #830303;
+    color: white;
+}
+
+.azulBtn{
+    background-color: #043a8a;
+    color: white;
+}
+
+.azulBtn:hover{
+    background-color: #043a8a;
+    color: white;
 }

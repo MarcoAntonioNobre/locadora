@@ -1,7 +1,7 @@
 <div class="card mt-2">
     <div class="d-flex justify-content-between card-header bg-dark">
         <h5 class="fs-2 text-white"><i class="bi bi-hash"></i> Gêneros</h5>
-        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#mdlCadGenero">Cadastrar</button>
+        <button type="button" class="btn verdeBtn botaoRadius" data-bs-toggle="modal" data-bs-target="#mdlCadGenero">Cadastrar</button>
     </div>
     <div class="card-body bg-dark">
         <div id="msg" class="alert alert-success text-center" role="alert"></div>
@@ -30,7 +30,7 @@
                             <td><?php echo $nome; ?></td>
                             <td><?php echo $cadastro; ?></td>
                             <td>
-                                <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#vermais<?php echo $id ?>">Ver mais</button>
+                                <button type="button" class="btn verdeBtn botaoRadius" data-bs-toggle="modal" data-bs-target="#vermais<?php echo $id ?>">Ver mais</button>
                                 <!-- Modal ver mais-->
                                 <div class="modal fade" id="vermais<?php echo $id ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered">
@@ -58,14 +58,14 @@
                                                 </div>
                                             </div>
                                             <div class="modal-footer bg-dark">
-                                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Voltar</button>
+                                                <button type="button" class="btn vermelhoBtn botaoRadius" data-bs-dismiss="modal">Voltar</button>
 
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <button type="button" class="btn btn-primary btn-sm">Alterar</button>
-                                <button type="button" class="btn btn-danger btn-sm">Apagar</button>
+                                <button type="button" class="btn azulBtn botaoRadius" onclick="abrirModalEdicao('<?php echo $nome;?>','<?php  echo  $id?>')">Alterar</button>
+                                <button type="button" class="btn vermelhoBtn botaoRadius" onclick="deletarGenero('apagarGenero',<?php echo $id; ?>)">Apagar</button>
 
                             </td>
                         </tr>

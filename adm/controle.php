@@ -19,18 +19,38 @@ switch ($controle) {
     case 'listarCliente';
         include_once 'cliente.php';
         break;
+    case 'addCliente';
+        include_once 'cadCliente.php';
+        break;
+    case 'editCliente';
+        include_once 'editCliente.php';
+        break;
+        case 'apagarCliente';
+        include_once 'apagarCliente.php';
+        break;
     case 'listarGenero';
         include_once 'genero.php';
         break;
+    case 'apagarGenero';
+        include_once 'apagarGenero.php';
+        break;
+    case 'generoAdd';
+        include_once 'cadGenero.php';
+        break;
+    case 'generoEdit';
+        include_once 'editGenero.php';
+        break;
+        
     case 'listarFilme';
         include_once 'filme.php';
         break;
     case 'listarAdm';
         include_once 'administrador.php';
         break;
-    case 'generoAdd';
-        include_once 'cadGenero.php';
+    case 'listarLocacao';
+        include_once 'locacao.php';
         break;
+
     default:
         echo 'Menu inexistente!';
 }

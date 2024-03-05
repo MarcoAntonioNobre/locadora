@@ -1,6 +1,6 @@
 <div class="card mt-2">
     <div class="d-flex justify-content-between card-header bg-dark">
-        <h5 class="fs-2 text-white"><i class="bi bi-person-fill"></i> Administradores</h5>
+        <h5 class="fs-2 text-white"><i class="bi bi-person-fill"></i> Locações</h5>
         <button type="button" class="btn verdeBtn botaoRadius" data-bs-toggle="modal" data-bs-target="#cadastroCliente">Cadastrar</button>
     </div>
     <div class="card-body bg-dark">
@@ -9,28 +9,29 @@
                 <tr>
                     <th scope="col" width="10%">#</th>
                     <th scope="col" width="30%">Nome</th>
-                    <th scope="col" width="20%">Email</th>
-                    <th scope="col" width="20%">Cadastro</th>
+                    <th scope="col" width="20%">Nome do filme</th>
+                    <th scope="col" width="20%">Data de locação</th>
                     <th scope="col" width="40%">Opções</th>
                 </tr>
             </thead>
             <tbody>
                 <!-- Foreach puxando os dados do banco -->
                 <?php
-                $admin = listarTabela('*', 'adm', 'idadm');
-                if ($admin != 'Vazio') {
-                    foreach ($admin as $adminItem) {
-                        $id = $adminItem->idadm;
-                        $nome = $adminItem->nome;
-                        $email = $adminItem->email;
-                        $cadastro = $adminItem->cadastro;
+                $locacao = listarTabela('l.idlocar, c.nome, f.nomeFilme , l.dataLocacao, l.cadastro', 'locar l INNER JOIN filme f ON l.idfilme = f.idfilme INNER JOIN cliente c ON l.idcliente = c.idcliente', 'idlocar');
+                if ($locacao != 'Vazio') {
+                    foreach ($locacao as $locacaoItem) {
+                        $id = $locacaoItem-> idlocar;
+                        $nome = $locacaoItem->nome;
+                        $nomeFilme = $locacaoItem->nomeFilme;
+                        $dataLocacao = $locacaoItem->dataLocacao;
+                        $cadastro = $locacaoItem->cadastro;
                         //Conversão de datas = implode("/", array_reverse(explode("-", variável com a data a ser convertida)));
                 ?>
                         <tr>
                             <th scope="row"><?php echo $id; ?></th>
                             <td><?php echo $nome; ?></td>
-                            <td><?php echo $email; ?></td>
-                            <td><?php echo $cadastro; ?></td>
+                            <td><?php echo $nomeFilme; ?></td>
+                            <td><?php echo $dataLocacao; ?></td>
                             <td>
 
                                 <button type="button" class="btn verdeBtn botaoRadius" data-bs-toggle="modal" data-bs-target="#vermais<?php echo $id ?>">Ver mais</button>
@@ -39,7 +40,7 @@
                                     <div class="modal-dialog modal-dialog-centered">
                                         <div class="modal-content">
                                             <div class="modal-header bg-dark text-white">
-                                                <h1 class="modal-title fs-5" id="exampleModalLabel">Administrador <?php echo $nome ?></h1>
+                                                <h1 class="modal-title fs-5" id="exampleModalLabel">Locação de <?php echo $nome ?></h1>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body bg-dark">
@@ -47,15 +48,14 @@
                                                     <div class="row">
                                                         <div class="col-lg-6">
                                                             <div class="rounded bg-secondary text-center">
-                                                                <p><b>Nome do Administrador:</b></p>
-                                                                <p><?php echo $nome ?></p>
+                                                                <p><b>Nome do Filme:</b></p>
+                                                                <p><?php echo $nomeFilme ?></p>
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-6">
                                                             <div class="rounded bg-secondary text-center">
-                                                                <p><b>Email do <?php echo 
-                                                                $nome;?></b></p>
-                                                                <p><?php echo $email ?></p>
+                                                                <p><b>Data de locação</b></p>
+                                                                <p><?php echo $dataLocacao ?></p>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -71,7 +71,6 @@
                                             </div>
                                             <div class="modal-footer bg-dark">
                                                 <button type="button" class="btn vermelhoBtn botaoRadius" data-bs-dismiss="modal">Voltar</button>
-
                                             </div>
                                         </div>
                                     </div>
