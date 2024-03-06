@@ -29,7 +29,6 @@ function fazerlogin() {
 
     mostrarLoading()
 
-
     fetch('login.php', {
         method: 'POST',
         headers: {
@@ -46,7 +45,7 @@ function fazerlogin() {
                 erromsg.innerHTML = data.message;
                 erromsg.style.display = 'block';
                 setTimeout(function () {
-                    window.location.href = 'adm.php';
+                    window.location.href = 'admin.php';
                 }, 2000);
             } else {
                 erromsg.style.display = 'block';
@@ -76,7 +75,6 @@ function fecharLoading() {
     }
 }
 
-
 function carregarConteudo(controle) {
     fetch('controle.php', {
         method: 'POST',
@@ -92,16 +90,13 @@ function carregarConteudo(controle) {
         .catch(error => console.error('Erro na requisição:', error));
 }
 
-// cadastro de genero
-const generoModalInstancia = new bootstrap.Modal(document.getElementById('mdlCadGenero'));
-const generoModal = document.getElementById('mdlCadGenero');
-const inGenero = document.getElementById('genero');
+const generoModalInstancia = new bootstrap.Modal(document.getElementById('mdlGeneroCadastro'));
+const generoModal = document.getElementById('mdlGeneroCadastro');
+const inGenero = document.getElementById('inpGeneroCadastro');
 const btnBotao = document.getElementById('btnCadGenero');
 
-// inGenero.value = 'Marco';
-
 if (generoModal) {
-    const formGenero = document.getElementById('frmCadGenero');
+    const formGenero = document.getElementById('frmGeneroCadastro');
 
     generoModal.addEventListener('shown.bs.modal', () => {
         inGenero.focus()
@@ -125,14 +120,9 @@ if (generoModal) {
                     console.log(data);
                     if (data.success) {
                         alert(data['message']);
-                        msg.innerHTML = data.message;
-                        msg.style.display = 'block';
                         carregarConteudo('listarGenero');
                     } else {
-                        msg.classList.remove('alert-success');
-                        msg.classList.add('alert-danger');
-                        msg.innerHTML = data.message;
-                        msg.style.display = 'block';
+                        alert(data['message']);
                     }
                 })
                 .catch(error => {
@@ -145,16 +135,19 @@ if (generoModal) {
 
 }
 
-//abrir modal
+const editGeneroModal = new bootstrap.Modal(document.getElementById('mdlGeneroEdicao'));
+const generoEditModal = document.getElementById('mdlGeneroEdicao');
+const inpEditGenero = document.getElementById('inpGeneroEdicao');
+const btnEditGenero = document.getElementById('btnEditGenero');
+
 function abrirModalEdicao(genero, idgenero) {
-    var inGeneroEdit = document.getElementById('inEditGenero');
+    var inGeneroEdit = document.getElementById('inpGeneroEdicao');
     if (inGeneroEdit) {
         inGeneroEdit.focus();
     }
     inGeneroEdit.value = genero;
     document.getElementById('idEditGenero').value = idgenero
-    // $('#generoEditModal').modal('show');
-    abrirFecharModalJs('mdlEditGenero', 'A');
+    abrirFecharModalJs('mdlGeneroEdicao', 'A');
 }
 
 function abrirFecharModalJs(idModal, abrirOuFechar) {
@@ -166,61 +159,10 @@ function abrirFecharModalJs(idModal, abrirOuFechar) {
     }
 }
 
-
-// edicao de genero
-const editGeneroModal = new bootstrap.Modal(document.getElementById('mdlEditGenero'));
-const generoEditModal = document.getElementById('mdlEditGenero');
-const inpEditGenero = document.getElementById('inEditGenero');
-const btnEditGenero = document.getElementById('btnEditGenero');
-
-// if (generoEditModal) {
-//     const formEditGenero = document.getElementById('frmEditGenero')
-
-//     generoEditModal.addEventListener('shown.bs.modal', () => {
-//         inpEditGenero.focus();
-//         const submitHandler = function (event) {
-//             event.preventDefault();
-//             btnEditGenero.disabled = true;
-//             editGeneroModal.hide();
-//             mostrarLoading();
-//             //const form = event.target;
-//             const formData = new FormData(this);
-//             formData.append('controle', 'generoEdit');
-//             const msg = document.getElementById('msg');
-//             fetch('controle.php', {
-//                 method: 'POST',
-//                 body: formData,
-//             })
-//                 .then(response => response.json())
-//                 .then(dataEdit => {
-//                     fecharLoading();
-//                     console.log(dataEdit);
-//                     alert('Gênero alterado com successo!');
-//                     if (dataEdit.success) {
-//                         alert(dataEdit['message']);
-//                         //carregarConteudo('listarGenero');
-//                         msg.innerHTML = dataEdit.message;
-//                         msg.style.display = 'block';
-//                         //btnEditGenero.disabled = false;
-//                     } else {
-//                         alert(dataEdit['message']);
-//                         // msg.classList.remove('alert-success');
-//                         // msg.classList.add('alert-danger');
-//                         // msg.innerHTML = dataEdit.message;
-//                         // msg.style.display = 'block';
-//                     }
-//                 });
-//         }
-//         formEditGenero.addEventListener('submit', submitHandler);
-//     })
-// }
-
-document.getElementById('frmEditGenero').addEventListener('submit', function (event) {
+document.getElementById('frmGeneroEdicao').addEventListener('submit', function (event) {
     event.preventDefault();
-
-
     var formData = new FormData(this);
-    formData.append('controle', 'generoEdit');
+    formData.append('controle', 'generoEdicao');
     fetch('controle.php', {
         method: 'POST',
         body: formData,
@@ -230,27 +172,15 @@ document.getElementById('frmEditGenero').addEventListener('submit', function (ev
             console.log(data);
             if (data.success) {
                 alert(data['message']);
-                editGeneroModal.hide();
                 carregarConteudo('listarGenero');
-                msg.innerHTML = dataEdit.message;
-                msg.style.display = 'block';
             } else {
                 alert(data['message']);
-                msg.classList.remove('alert-success');
-                msg.classList.add('alert-danger');
-                msg.innerHTML = dataEdit.message;
-                msg.style.display = 'block';
             }
         })
         .catch(error => {
             console.error('Erro na requisição: ', error);
         })
 })
-
-
-// Abrir modal para deletar/apagar genero ------------------------------------------
-
-
 
 // function abrirModalApagarGenero(id) {
 //     document.getElementById('idApagarGenero').value = id;
@@ -265,12 +195,11 @@ document.getElementById('frmEditGenero').addEventListener('submit', function (ev
 //     }
 // }
 
-
 function deletarGenero(controle, id){
     //alert(controle + id)
     fetch('controle.php', {
         method: 'POST',
-        body: 'controle=' + encodeURIComponent(controle) + '&idApagarGenero=' + encodeURIComponent(id),
+        body: 'controle=' + encodeURIComponent(controle) + '&idGenero=' + encodeURIComponent(id),
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
         },
@@ -287,16 +216,14 @@ function deletarGenero(controle, id){
         .catch(error => console.error('Erro na requisição:', error));
 }
 
-// ------------------------------------------------------------------------------------------
-//Cadastro de cliente
-
-const clienteCadInstancia = new bootstrap.Modal(document.getElementById('mdlCadCliente'));
-const modalCadCliente = document.getElementById('mdlCadCliente');
-const inpNomeFocus = document.getElementById('inpNomeCliente');
-const btnCadCliente = document.getElementById('btnCadCliente');
+// ------------------------------------Cliente-------------------------------------------
+const clienteCadInstancia = new bootstrap.Modal(document.getElementById('mdlClienteCadastro'));
+const modalCadCliente = document.getElementById('mdlClienteCadastro');
+const inpNomeFocus = document.getElementById('inpNome');
+const btnCadCliente = document.getElementById('btnClienteCadastro');
 
 if (modalCadCliente) {
-    const formCadCliente = document.getElementById('CadCliente');
+    const formCadCliente = document.getElementById('frmClienteCadastro');
 
     modalCadCliente.addEventListener('shown.bs.modal', () => {
         inpNomeFocus.focus();
@@ -308,7 +235,7 @@ if (modalCadCliente) {
             mostrarLoading();
             const form = event.target;
             const formData = new FormData(form);
-            formData.append('controle', 'addCliente');
+            formData.append('controle', 'clienteAdd');
             //const msg = document.getElementById('msg');
             fetch('controle.php', {
                 method: 'POST',
@@ -337,12 +264,8 @@ if (modalCadCliente) {
     })
 }
 
-
-
-// Abrir modal de edicao do cliente
-
 function abrirModalEdicaoCliente(nome, nascimento, cpf, idcliente) {
-    const nomeEdit = document.getElementById('inpEditNomeCliente');
+    const nomeEdit = document.getElementById('inpNomeEdicao');
     const nascimentoEdit = document.getElementById('inpEditNascimento');
     const cpfEdit = document.getElementById('inpEditCpf');
 
@@ -353,7 +276,7 @@ function abrirModalEdicaoCliente(nome, nascimento, cpf, idcliente) {
     nascimentoEdit.value = nascimento;
     cpfEdit.value = cpf;
     document.getElementById('idEditCliente').value = idcliente
-    abrirFecharModalJsCliente('mdlEditCliente', 'A');
+    abrirFecharModalJsCliente('mdlClienteEdicao', 'A');
 }
 
 function abrirFecharModalJsCliente(idModal, abrirOuFechar) {
@@ -365,14 +288,10 @@ function abrirFecharModalJsCliente(idModal, abrirOuFechar) {
     }
 }
 
-
-
-// editar cliente
-
-const clienteEditInstancia = new bootstrap.Modal(document.getElementById('mdlEditCliente'));
-const modalEditCliente = document.getElementById('mdlEditCliente');
-const inpEditNomeFocus = document.getElementById('inpEditNomeCliente');
-const btnEditCliente = document.getElementById('btnEditCliente');
+const clienteEditInstancia = new bootstrap.Modal(document.getElementById('mdlClienteEdicao'));
+const modalEditCliente = document.getElementById('mdlClienteEdicao');
+const inpEditNomeFocus = document.getElementById('inpNomeEdicao');
+const btnEditCliente = document.getElementById('btnClienteEdicao');
 
 // if (modalEditCliente) {
 //     const formEditCliente = document.getElementById('frmEditCliente');
@@ -410,10 +329,10 @@ const btnEditCliente = document.getElementById('btnEditCliente');
 
 
 
-document.getElementById('frmEditCliente').addEventListener('submit', function (event) {
+document.getElementById('frmClienteEdicao').addEventListener('submit', function (event) {
     event.preventDefault();
     var formData = new FormData(this);
-    formData.append('controle', 'editCliente');
+    formData.append('controle', 'clienteEdit');
     fetch('controle.php', {
         method: 'POST',
         body: formData,

@@ -2,17 +2,7 @@
     flex-grow: 0;
 }
 
-.fundoADMlogin{ 
-    background-color: rgb(10, 10, 10);
-}
 
-.opcoesADM{
-    color: rgb(255, 255, 255);
-}
-.opcoesADM:hover{
-    color: white;
-    text-shadow: rgb(114, 114, 114) 0 0 1em;
-}
 .wCad{
     text-align: center;
     color: white;
@@ -44,35 +34,11 @@
     display: none;
 }
 
- /* Estilo de classificacao dos filmes */
-.amarelo{
-    background-color: rgb(189, 189, 35);
-    color: black;
-}
-.verde{
-    background-color: rgba(43, 173, 18, 0.877);
-    color: black;
-}
-.azul{
-    background-color: rgb(6, 77, 138);
-    color: black;
-}
-.laranja{
-    background-color: rgb(187, 103, 1);
-    color: black;
-}
-.vermelho{
-    background-color: rgb(181, 20, 20);
-    color: black;
-}
-.preto{
-    background-color: rgb(0, 0, 0);
-    color: rgb(255, 255, 255);
-}
-
-/* -------------------- */
 
 /* --------------Login--------------- */
+.fundoADMlogin{
+    background-color: white;
+}
 
 .formEmailAdm{
     width: 300px;
@@ -90,8 +56,7 @@
 }
 
 .labelAdm{
-    color: white;
-    text-align: center;
+    color: black;
 }
 
 .cardADMlogin{
@@ -117,49 +82,75 @@
     background-color: #1e1c1c;
 }
 
-/*Adm off canva*/
+
+
+/*----------Adm off canva----------*/
 
 .btnOffCanvas{
     background-color: white;
 }
 .btnChamaOffCanva{
-    background-color: gray;
+    background-color: black;
     margin-left: 5px;
     color: white;
 }
 
-/*Botoes*/
+.btnChamaOffCanva:hover{
+    background-color: black;
+}
+
+.cinzaCanva{
+    background-color: lightgray;
+    color: black;
+}
+
+.opcoesADM{
+    color: black;
+}
+.opcoesADM:hover{
+    text-shadow: rgb(114, 114, 114) 0 0 1em;
+}
+
+/*-----------Botões----------*/
 
 .botaoRadius{
     border-radius: 30px;
 }
 
 .verdeBtn{
-    background-color: #075d07;
-    color: white;
+    border-color: lightgreen;
+    color: black;
 }
 
 .verdeBtn:hover{
-    background-color: #075d07;
+    transition-duration: 0.5s;
+    background-color: green;
     color: white;
 }
 
 .vermelhoBtn{
-    background-color: #830303;
-    color: white;
+    border-color: lightcoral;
+    color: black;
 }
 
 .vermelhoBtn:hover{
-    background-color: #830303;
+    transition-duration: 0.5s;
+    background-color: red;
     color: white;
 }
 
 .azulBtn{
-    background-color: #043a8a;
-    color: white;
+    border-color: lightblue;
+    color: black;
 }
 
 .azulBtn:hover{
-    background-color: #043a8a;
+    transition-duration: 0.5s;
+    background-color: blue;
     color: white;
+}
+
+
+.cinza{
+    background-color: lightgray;
 }
