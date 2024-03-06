@@ -34,29 +34,22 @@
                                 <div class="modal fade" id="vermais<?php echo $id ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered">
                                         <div class="modal-content">
-                                            <div class="modal-header bg-dark text-white">
+                                            <div class="modal-header cinza text-black">
                                                 <h1 class="modal-title fs-5" id="exampleModalLabel">Gênero <?php echo $nome ?></h1>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                             </div>
-                                            <div class="modal-body bg-dark">
-                                                <div class="card-body text-black bg-dark">
-                                                    <div class="row">
-                                                        <div class="col-lg-6">
-                                                            <div class="rounded bg-secondary text-center">
-                                                                <p><b>Gênero:</b></p>
-                                                                <p><?php echo $nome ?></p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-6">
-                                                            <div class="rounded bg-secondary text-center">
-                                                                <p><b>Data de cadastro</b></p>
-                                                                <p><?php echo $cadastro ?></p>
-                                                            </div>
-                                                        </div>
+                                            <div class="modal-body">
+                                                <div class="card-body">
+                                                    <div>
+                                                        <b>Gênero:</b> <?php echo $nome ?>
+                                                    </div>
+                                                    <hr>
+                                                    <div>
+                                                        <b>Data de cadastro</b> <?php echo $cadastro ?>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="modal-footer bg-dark">
+                                            <div class="modal-footer">
                                                 <button type="button" class="btn vermelhoBtn botaoRadius" data-bs-dismiss="modal">Voltar</button>
 
                                             </div>
